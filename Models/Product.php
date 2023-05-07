@@ -14,4 +14,8 @@ class Product{
     $this->image = $_image;
     $this->price = $_price;
   }
+
+  public function getPrice(){
+    return $this->price;
+  }
 }
