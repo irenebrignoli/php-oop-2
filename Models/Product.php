@@ -18,4 +18,19 @@ class Product{
   public function getPrice(){
     return $this->price;
   }
+
+  public function returnIcon(){
+
+    foreach($this->category as $Category){
+
+      if($Category->name == 'Cat'){
+        echo '<i class="fa-solid fa-cat fs-4"></i>';
+      }else if($Category->name == 'Dog'){
+        echo '<i class="fa-solid fa-dog fs-4"></i>';
+      }else if($Category->name == 'Dog' && 'Cat'){
+        echo '<i class="fa-solid fa-cat fs-4"></i>';
+        echo '<i class="fa-solid fa-dog fs-4"></i>';
+      }
+    }
+  }
 }

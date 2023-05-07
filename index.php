@@ -58,7 +58,7 @@ $lettoFluffy->color = 'white';
             <h5 class="card-title fw-bold"><?php echo $croquettes->name ?></h5>
             <div class="card-text"><?php echo $croquettes->brand ?></div>
           </div>
-          <i class="fa-solid fa-cat fs-4"></i>
+          <?php $croquettes->returnIcon()?>
         </div>
         <img src="<?php echo $croquettes->image ?>" class="card-img-top" alt="...">
         <div class="card-body d-flex justify-content-between">
@@ -75,7 +75,7 @@ $lettoFluffy->color = 'white';
               <h5 class="card-title fw-bold"><?php echo $polloSqueak->name ?></h5>
               <div class="card-text"><?php echo $polloSqueak->brand ?></div>
             </div>
-            <i class="fa-solid fa-dog fs-4"></i>
+            <?php $croquettes->returnIcon()?>
           </div>
           <img src="<?php echo $polloSqueak->image ?>" class="card-img-top" alt="...">
           <div class="card-body d-flex justify-content-between">
@@ -92,7 +92,7 @@ $lettoFluffy->color = 'white';
             <h5 class="card-title fw-bold"><?php echo $lettoFluffy->name ?></h5>
             <div class="card-text"><?php echo $lettoFluffy->brand ?></div>
           </div>
-          <i class="fa-solid fa-cat fs-4"></i>
+          <?php $croquettes->returnIcon()?>
         </div>
         <img src="<?php echo $lettoFluffy->image ?>" class="card-img-top" alt="...">
         <div class="card-body d-flex justify-content-between">
