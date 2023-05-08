@@ -13,11 +13,26 @@ $croquettes = new Food('Kitten Pollame', [$cat], 'Feringa', 'img/pollame.jpg', 4
 $croquettes->type ='dry';
 $croquettes->age ='young';
 $croquettes->for_sterilised ='no';
+
+try {
+  $croquettes->setQuantity(9);
+} catch (Exception $e) {
+  var_dump($e);
+  echo "Si è verificato un errore: " . $e->getMessage();
+}
 //var_dump($croquettes);
 
 $polloSqueak = new Toy('polletto-squeak', [$dog], 'Zooplus', 'img/pollo.jpg', 1.79);
 $polloSqueak->material = 'latex';
 $polloSqueak->type = 'chew toy';
+$polloSqueak->color = 'yellow';
+
+try {
+  $polloSqueak ->setQuantity(7);
+} catch (Exception $e) {
+  var_dump($e);
+  echo "Si è verificato un errore: " . $e->getMessage();
+}
 //var_dump($polloSqueak);
 
 
@@ -26,6 +41,13 @@ $lettoFluffy->material = 'nylon';
 $lettoFluffy->size = 'L 50 x P 42 x H 7,5 cm';
 $lettoFluffy->ambient = 'inside';
 $lettoFluffy->color = 'white';
+
+try {
+  $lettoFluffy ->setQuantity(2);
+} catch (Exception $e) {
+  var_dump($e);
+  echo "Si è verificato un errore: " . $e->getMessage();
+}
 //var_dump($lettoFluffy);
 
 $productList =[
