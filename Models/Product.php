@@ -1,15 +1,16 @@
 <?php
 
+require_once __DIR__ . "/Category.php";
 class Product{
   public $name;
-  public $category; //(gatto o cane)
+  public $categories; //(gatto o cane)
   public $brand;
   public $image;
   private $price;
 
-  public function __construct(string $_name, array $_category, string $_brand, $_image, float $_price){
+  public function __construct(string $_name, array $_categories, string $_brand, $_image, float $_price){
     $this->name = $_name;
-    $this->category = $_category;
+    $this->categories = $_categories;
     $this->brand = $_brand;
     $this->image = $_image;
     $this->price = $_price;
@@ -19,18 +20,8 @@ class Product{
     return $this->price;
   }
 
-  public function returnIcon(){
-
-    foreach($this->category as $Category){
-
-      if($Category->name == 'Cat'){
-        echo '<i class="fa-solid fa-cat fs-4"></i>';
-      }else if($Category->name == 'Dog'){
-        echo '<i class="fa-solid fa-dog fs-4"></i>';
-      }else if($Category->name == 'Dog' && 'Cat'){
-        echo '<i class="fa-solid fa-cat fs-4"></i>';
-        echo '<i class="fa-solid fa-dog fs-4"></i>';
-      }
-    }
+  public function getClassName(){
+    return get_class($this);
   }
+
 }

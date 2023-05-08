@@ -6,8 +6,8 @@ require_once __DIR__ . "/Models/Toy.php";
 require_once __DIR__ . "/Models/Kennel.php";
 require_once __DIR__ . "/Models/Category.php";
 
-$dog = new Category('Dog');
-$cat = new Category('Cat');
+$dog = new Category('Dog','fa-solid fa-cat fs-4');
+$cat = new Category('Cat','fa-solid fa-dog fs-4');
 
 $croquettes = new Food('Kitten Pollame', [$cat], 'Feringa', 'img/pollame.jpg', 4.99);
 $croquettes->type ='dry';
@@ -27,6 +27,12 @@ $lettoFluffy->size = 'L 50 x P 42 x H 7,5 cm';
 $lettoFluffy->ambient = 'inside';
 $lettoFluffy->color = 'white';
 //var_dump($lettoFluffy);
+
+$productList =[
+  $croquettes,
+  $polloSqueak,
+  $lettoFluffy
+]
 
 ?>
 
@@ -51,57 +57,34 @@ $lettoFluffy->color = 'white';
 
     <div class="row">
 
-    <div class="col">
-      <div class="card">
-        <div class="card-body d-flex justify-content-between">
-          <div>
-            <h5 class="card-title fw-bold"><?php echo $croquettes->name ?></h5>
-            <div class="card-text"><?php echo $croquettes->brand ?></div>
-          </div>
-          <?php $croquettes->returnIcon()?>
-        </div>
-        <img src="<?php echo $croquettes->image ?>" class="card-img-top" alt="...">
-        <div class="card-body d-flex justify-content-between">
-          <span class="card-text"><?php echo $croquettes->getPrice() ?>€</span>
-          <span class="card-text"><?php echo $croquettes->type ?></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
+    <?php foreach($productList as $product){?>
+      <div class="col">
+        <div class="card">
           <div class="card-body d-flex justify-content-between">
             <div>
-              <h5 class="card-title fw-bold"><?php echo $polloSqueak->name ?></h5>
-              <div class="card-text"><?php echo $polloSqueak->brand ?></div>
+              <h5 class="card-title fw-bold"><?php echo $product->name ?></h5>
+              <div class="card-text"><?php echo $product->brand ?></div>
             </div>
-            <?php $croquettes->returnIcon()?>
+            <?php foreach($product->categories as $category) {?>
+              <i class="<?php echo $category->icon;?>"></i>
+            <?php } ?>
           </div>
-          <img src="<?php echo $polloSqueak->image ?>" class="card-img-top" alt="...">
+          <img src="<?php echo $product->image ?>" class="card-img-top" alt="...">
           <div class="card-body d-flex justify-content-between">
-            <span class="card-text"><?php echo $polloSqueak->getPrice() ?>€</span>
-            <span class="card-text"><?php echo $polloSqueak->type ?></span>
+            <span class="card-text"><?php echo $product->getPrice() ?>€</span>
+            <span class="card-text">
+              <?php if($product->getClassName() == 'Food'){?>
+                Tipo: <?php echo $product->type;?>
+                <?php } else if ($product->getClassName() == 'Toy'){?>
+                  Tipo: <?php echo $product->type;?>
+                  <?php } else if ($product->getClassName() == 'Kennel'){?>
+                    Ambiente: <?php echo $product->ambient;?>
+              <?php } ?>
+            </span>
           </div>
-      </div>
-    </div>
-
-    <div class="col">
-    <div class="card">
-        <div class="card-body d-flex justify-content-between">
-          <div>
-            <h5 class="card-title fw-bold"><?php echo $lettoFluffy->name ?></h5>
-            <div class="card-text"><?php echo $lettoFluffy->brand ?></div>
-          </div>
-          <?php $croquettes->returnIcon()?>
-        </div>
-        <img src="<?php echo $lettoFluffy->image ?>" class="card-img-top" alt="...">
-        <div class="card-body d-flex justify-content-between">
-          <span class="card-text"><?php echo $lettoFluffy->getPrice() ?>€</span>
-          <span class="card-text"><?php echo $lettoFluffy->ambient ?></span>
         </div>
       </div>
-    </div>
-    
+    <?php } ?>
 
     </div>
     
